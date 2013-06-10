@@ -3,6 +3,11 @@
 #include <algorithm>
 using namespace std;
 
+// I was finally able to solve this thanks to this:
+// http://sound-system-79.blogspot.com.ar/2013/01/uva-10160-servicing-stations.html
+// The key was the "coverable" vector, and the double recursion structure.
+// I wish I thought that first
+
 #define one_bit(i) (((unsigned long long) 1) << i)
 
 typedef unsigned long long ull;
