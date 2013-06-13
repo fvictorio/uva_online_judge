@@ -27,7 +27,7 @@ bool comp(pair<int,int> a, pair<int,int> b) {
 }
 
 void magia(vector<int> &vertices, vector<ull> &adjacencies, vector<ull> &coverable,
-            int idx, int cant_elim, int &minn, ull erased, ull obj) {
+            int idx, int cant_elim, int &minn, ull erased, ull obj, int n) {
     
     if (erased == obj) {
         if (cant_elim < minn) {
@@ -35,6 +35,8 @@ void magia(vector<int> &vertices, vector<ull> &adjacencies, vector<ull> &coverab
         }
         return;
     }
+
+    if (idx == n) return;
     
     if (cant_elim + 1 >= minn) {
         return;
@@ -46,9 +48,9 @@ void magia(vector<int> &vertices, vector<ull> &adjacencies, vector<ull> &coverab
 
     int v = vertices[idx];
     magia(vertices, adjacencies, coverable, idx+1, cant_elim+1, 
-          minn, erased | adjacencies[v], obj);
+          minn, erased | adjacencies[v], obj, n);
     magia(vertices, adjacencies, coverable, idx+1, cant_elim, 
-          minn, erased, obj);
+          minn, erased, obj, n);
 }
 
 
@@ -98,7 +100,7 @@ int main () {
         }
 
         int minn = n;
-        magia(vertices, adjacencies, coverable, 0, 0, minn, 0, obj);
+        magia(vertices, adjacencies, coverable, 0, 0, minn, 0, obj, n);
         cout << minn << endl;
     }
 

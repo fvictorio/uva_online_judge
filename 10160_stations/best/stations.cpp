@@ -271,7 +271,6 @@ bool comp2(int a, int b) {
 void construct_candidates(vector<ull> &adjacencies, ull erased, int n, int cant_elim)  {
     int k = 0;
     for (int i = 0; i < n; i++) {
-        if (erased & one_bit[i]) continue;
         no_adjs[i] = count_bits(adjacencies[i]);
         cands[k++] = i;
     }
